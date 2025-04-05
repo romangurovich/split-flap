@@ -1,0 +1,67 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+ ---
+description: TypeScript Type Definitions
+globs: *.ts,*.tsx
+---
+# TypeScript Type Definitions
+
+Rules for managing TypeScript type definitions in the project.
+
+<rule>
+name: typescript_types
+description: Standards for TypeScript type definitions and dependencies
+filters:
+  # Match TypeScript files
+  - type: file_extension
+    pattern: "\\.(ts|tsx)$"
+  # Match import statements
+  - type: content
+    pattern: "import.*from.*"
+
+actions:
+  - type: suggest
+    message: |
+      When working with TypeScript in this project:
+
+      1. Required Type Definitions:
+         - Install @types/react and @types/react-dom for React
+         - Install @types/node for Node.js types
+         - Install type definitions for any third-party libraries used
+
+      2. Installation:
+         ```bash
+         npm install --save-dev @types/react @types/react-dom @types/node
+         ```
+
+      3. Type Safety:
+         - Always define types for props and state
+         - Use TypeScript interfaces for component props
+         - Avoid using 'any' type
+         - Enable strict mode in tsconfig.json
+
+      4. Common Issues:
+         - Missing type definitions for third-party libraries
+         - Implicit 'any' types
+         - Missing JSX types
+
+examples:
+  - input: |
+      import React from 'react';
+      // Missing type definitions
+    output: "Install @types/react and @types/react-dom"
+
+  - input: |
+      const MyComponent = ({ prop }) => {
+        // Implicit any type
+        return <div>{prop}</div>;
+      }
+    output: "Define proper types for component props"
+
+metadata:
+  priority: high
+  version: 1.0
+</rule>

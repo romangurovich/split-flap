@@ -10,7 +10,7 @@ export function WordHistory({ words }: WordHistoryProps) {
       {words.map((word, index) => (
         <div
           key={`${word}-${index}`}
-          className="flex gap-2"
+          className="flex justify-center gap-2"
           style={{
             opacity: 1 - (index * 0.2), // Fade out progressively
             transform: `scale(${1 - (index * 0.05)})`, // Slightly decrease size

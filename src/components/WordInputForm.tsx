@@ -16,13 +16,13 @@ const WordInputForm: React.FC<WordInputFormProps> = ({ addWordToList }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4">
+    <form onSubmit={handleSubmit} className="mt-4 flex justify-center">
       <MaskedInput
         mask={[/[A-Za-z]/, /[A-Za-z]/, /[A-Za-z]/, /[A-Za-z]/]}
         placeholder="Enter a 4-letter word"
         value={newWord}
         onChange={(e) => setNewWord(e.target.value)}
-        className="p-2 rounded text-lg tracking-widest"
+        className="w-64 p-2 rounded text-lg tracking-widest"
       />
       <button 
         type="submit"
